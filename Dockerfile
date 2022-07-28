@@ -1,4 +1,4 @@
-FROM gcr.io/kaniko-project/executor:v1.8.1-debug
+FROM gcr.io/kaniko-project/executor:debug-v1.3.0
 
 ENV HOME /root
 ENV USER root

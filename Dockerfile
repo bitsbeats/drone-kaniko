@@ -1,4 +1,10 @@
-FROM gcr.io/kaniko-project/executor:v1.12.1-debug
+FROM gcr.io/kaniko-project/executor:v1.12.1-debug as kaniko
+
+# ---
+
+FROM alpine:3.17
+
+COPY --from=kaniko /kaniko /kaniko
 
 ENV HOME /root
 ENV USER root

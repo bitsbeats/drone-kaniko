@@ -28,14 +28,14 @@ fi
 DOCKERFILE=${PLUGIN_DOCKERFILE:-Dockerfile}
 CONTEXT=${PLUGIN_CONTEXT:-$PWD}
 LOG=${PLUGIN_LOG:-info}
-EXTRA_OPTS=""
+EXTRA_OPTS="${PLUGIN_EXTRA_OPTS:-}"
 
 if [[ -n "${PLUGIN_TARGET:-}" ]]; then
     TARGET="--target=${PLUGIN_TARGET}"
 fi
 
 if [[ "${PLUGIN_SKIP_TLS_VERIFY:-}" == "true" ]]; then
-    EXTRA_OPTS="--skip-tls-verify=true"
+    EXTRA_OPTS="${EXTRA_OPTS} --skip-tls-verify=true"
 fi
 
 if [[ "${PLUGIN_CACHE:-}" == "true" ]]; then

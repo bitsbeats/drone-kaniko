@@ -96,16 +96,6 @@ else
     CACHE=""
 fi
 
-if [ "$DRONE_BUILD_EVENT" == "pull_request" ] && [ "$DRONE_BUILD_TRIGGER" != "@hook" ]; then
-    if [ "$(date -d 00:00 +%s)" -gt $(git log -1 --format="%at") ]; then
-	echo REBUILD of a OLD commit
-    else
-	echo REBUILD of a RECENT commit
-	echo SKIPPING docker build
-	exit 0
-    fi
-fi
-
 /kaniko/executor -v ${LOG} \
     --context=${CONTEXT} \
     --dockerfile=${DOCKERFILE} \

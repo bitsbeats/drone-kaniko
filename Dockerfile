@@ -1,8 +1,8 @@
-FROM gcr.io/kaniko-project/executor:v1.12.1-debug as kaniko
+FROM gcr.io/kaniko-project/executor:v1.23.2-debug as kaniko
 
 # ---
 
-FROM alpine:3.17
+FROM alpine:3.20
 
 COPY --from=kaniko /kaniko /kaniko
 
